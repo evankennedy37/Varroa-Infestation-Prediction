@@ -41,4 +41,7 @@ Data from a user's own operation should be placed in this folder and specified i
     - station_id: Closest weather station identifier: Should match up with those used in the selected Weather Data
     - For Reference, see: yard.csv
 
+IMPORTANT: User-included data files should be given names without spaces (ie. replace spaces with an _)
+
  Note: The easiest way to turn records into CSV files is often to use Excel's 'Export as CSV' option to convert an Excel notebook into a CSV file
+
