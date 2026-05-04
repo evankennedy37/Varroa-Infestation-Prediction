@@ -111,3 +111,20 @@ A file used in the running of the pipeline and the predictor, not interacted wit
 A text file encoding the installation requirements for running the pipeline, not neccesary to be interacted with by the user
 
 Note: Can be used as reference if wishing to run the notebooks individually within a Virtual Environment, though this approach is not the recommended one.
+
+## Using this Repository
+To use the main utilities of the project repositories, pipeline.yml & predict.yml, two prerequisite steps are required:
+ - Docker Desktop must be open in the background: Necessary to enable the Docker daemon that the Docker Compose files use
+     - If Help Needed: https://www.docker.com/products/docker-desktop/
+ - ClearML API Credentials must be configured for the system: These are used for logging model performance in the ClearML Web UI
+     - If Help Needed: https://clear.ml/docs/latest/docs/webapp/settings/webapp_settings_profile/
+
+Once these prerequisties are satisfied, pipeline.yml & predict.yml can be run using methods described above, for the following results:
+(All the following based on configurations specified in /configs files, as explained above)
+ - pipeline.yml: 
+    - Tensors Datafile in pipeline/outputs [Not for user interaction]
+    - Model file in pipeline/outputs [Not for user interaction]
+    - A Prediction in the 'predictions' folder (the folder will appear if it was absent)
+  - predictions.yml: (If ran properly, only after pipeline.yml has already created a model)
+    - A Prediction in the 'predictions' folder (the folder will appear if it was absent)
+  
