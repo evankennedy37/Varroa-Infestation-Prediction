@@ -11,13 +11,6 @@ More advanced users may also clone the repository via git for local use, but sho
  - Note: Cloning the repository is NOT necessary to ensure the latest functionalities are being used locally
 
 ## Repository Components
-### /configs
-A folder with 2 JSON files in it:
- - pipeline_config.json: Inputs to the model-creation segment of the pipeline
- - prediction_confg.json: Inputs to the prediction segment of the pipeline
-
-These files can be opened with a standard text editor for changing input parameters: Be mindful that the parameters are the values to the right of the ':' on each line, before the comma. When adjusting parameters, be sure to keep the comma and ':' in place, and to match the format of the data inplace by default (elaborated in a later section).
-
 ### /data
 A folder containing 6 .csv files: These files are included as demonstration, and are the files used as reference when the model was originally developed.
 
@@ -43,5 +36,26 @@ Data from a user's own operation should be placed in this folder and specified i
 
 IMPORTANT: User-included data files should be given names without spaces (ie. replace spaces with an _)
 
- Note: The easiest way to turn records into CSV files is often to use Excel's 'Export as CSV' option to convert an Excel notebook into a CSV file
+Note: The easiest way to turn records into CSV files is often to use Excel's 'Export as CSV' option to convert an Excel notebook into a CSV file
 
+### /configs
+A folder with 2 JSON files in it, used for inputs to phases of the pipeline:
+ - pipeline_config.json: Inputs to the model-creation segment of the pipeline
+     - model_name: What you would like the model produced to be called, useful primarily if creating multiple models from different data
+         - FORMATTING REQIUREMENT: In quotes (ie. "name"), Ends in .json file extension
+     - varroa_samplings_file_path: Path to the desired varroa sampling data, from the base directory of the project
+         - FORMATTING REQIUREMENT: In quotes (ie. "name")
+     - yard_information_file_path: Path to the desired yard information data, from the base directory of the project
+         - FORMATTING REQIUREMENT: In quotes (ie. "name")
+     - weather_data_file_path: Path to the desired weather data, from the base directory of the project
+         - FORMATTING REQIUREMENT: In quotes (ie. "name")
+ - prediction_confg.json: Inputs to the prediction segment of the pipeline
+     - predictor_model_name: What model you would like to use to make a prediction, matches with created model name by default
+     - weather_data_file_path: Path to the desired weather data (definite or forecast), from the base directory of the project
+     - weather_station_id: The identifier for the weather station closest to the yard/apiary having a prediction made for it
+     - yard_density: An integer value for the number of hives in the yard/apiary having a prediction made for it
+     - yard_elevation: An floating point value (ie. decimals allowed) for the elevation of the yard/apiary having a prediction made for it
+     - "prediction_period_start_date": "2017-07-21",
+     - "prediction_period_end_date": "2017-07-28"
+
+These files can be opened with a standard text editor for changing input parameters: Be mindful that the parameters are the values to the right of the ':' on each line, before the comma. When adjusting parameters, be sure to keep the comma and ':' in place, and to match the format of the data inplace by default (specified above).
