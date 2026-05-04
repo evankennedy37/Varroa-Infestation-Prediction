@@ -8,7 +8,8 @@ The intended use of this project is to enable users to input data on their own a
 Included in the repository are data from hives in Austria to provide an example. Models fit on this data are not intended to be used for apiaries outside of Austria, but can be if a user is lacking data, though performance may be less reliable.
  - Example Data Source: https://data-for-good.pubpub.org/pub/aawkkv33/release/4
 
-For reference, on example data the model produced by this project's pipeline had a prediction accuracy of 95%.
+For reference, on example data the model produced by this project's pipeline had a prediction accuracy of 95%, for hives in Austria.
+ - This is the model yielded if the pipeline is run (explained later) without changing any configurations (explained later)
 
 
 ## Getting your Own Copy
@@ -26,17 +27,17 @@ A folder containing 6 .csv files: These files are included as demonstration, and
 
 Data from a user's own operation should be placed in this folder and specified in the appropriate config files (explained below) to be used for model creation and/or making predictions. Appropriate formatting is as follows:
  - **Weather Data**: Timeseries CSV with fields ["station_id","date","hour","air_temp","dew_point","pressure","wind_dir","wind_spd"]
-    - station_id: Weather station identifier, can be from a weather service, or proprietary labeling: Must be an integer value
-    - date: XXXX-XX-XX string, encoding Year-Month-Day
-    - hour: XX:XX:XX string, encoding Hour:Minute:Second
-    - All Other Fields (ie. Weather Measuring Fields): Floating point numbers (ie. decimals allowed), using -9999.0 to represent a missing
+    - *station_id*: Weather station identifier, can be from a weather service, or proprietary labeling: Must be an integer value
+    - *date*: XXXX-XX-XX string, encoding Year-Month-Day
+    - *hour*: XX:XX:XX string, encoding Hour:Minute:Second
+    - *All Other Fields (ie. Weather Measuring Fields)*: Floating point numbers (ie. decimals allowed), using -9999.0 to represent a missing
     - For Reference, see: weather.csv
  - **Varroa Sampling Data**: CSV with ["sampling_id","date_from","date_to","varroa_count","yard_id"]
-    - sampling_id: Unique identifier for a sampling count of varroa mites: Must be an integer value
-    - date_from: Date when the drop board was freshly set, prior to the sampling: XXXX-XX-XX string, encoding Year-Month-Day
-    - date_to: Date when the mites were counted: XXXX-XX-XX string, encoding Year-Month-Day
-    - varroa_count: Manual count of Varroa Mites on the board: Must be an integer value
-    - yard_id: A unique integer identifier for a particular yard/apiary
+    - *sampling_id*: Unique identifier for a sampling count of varroa mites: Must be an integer value
+    - *date_from*: Date when the drop board was freshly set, prior to the sampling: XXXX-XX-XX string, encoding Year-Month-Day
+    - *date_to*: Date when the mites were counted: XXXX-XX-XX string, encoding Year-Month-Day
+    - *varroa_count*: Manual count of Varroa Mites on the board: Must be an integer value
+    - *yard_id*: A unique integer identifier for a particular yard/apiary
     - For Reference, see: varroa_sampling.csv
  - **Yard Data**: CSV with ["yard_id", "elevation", "station_id"]
     - yard_id: A unique integer identifier for a particular yard/apiary: Should match up with those used in the selected Varroa Sampling Data
@@ -79,9 +80,9 @@ These files can be opened with a standard text editor for changing input paramet
 
 ### /pipeline
 Contains the three Juypter notebooks that form the three phases of the pipeline:
- - Data Processor: Processes the specified data files into combined Tensors
- - Model Fitter: Fits a predictive model onto the data
- - Predictor: Makes a true/false prediction of infestation, accompanied by a probability of infestation, for a given data range
+ - **Data Processor**: Processes the specified data files into combined Tensors
+ - **Model Fitter**: Fits a predictive model onto the data
+ - **Predictor**: Makes a true/false prediction of infestation, accompanied by a probability of infestation, for a given data range
 
 Additionally includes a folder labeled 'outputs' with an empty 'dummy.txt' file in it: The folder is important to have in place, the file inside can be removed if desired.
 
@@ -93,7 +94,7 @@ Note: While these notebooks can be run in sequence to simulate the pipeline, it 
 A Docker Compose file used to run the pipeline through all of its phases, producing a predictive model and predictions, based on the configuratons specified in the /configs files
 
 Running Options:
- - On Windows: Double-click the pipeline.bat file
+ - On Windows: Double-click the **pipeline.bat** file
  - Non-Windows: Navigate to the project directory in a Terminal/Command-Line Interface, then run 'docker compose -f pipeline.yml build --no-cache && docker compose -f pipeline.yml up --remove-orphans'
       - Note: Easiest way to naivgate to project directory is with 'cd {full project directory path}', copying the directory path in appropriately
 
@@ -101,7 +102,7 @@ Running Options:
 A Docker Compose file used to run the predictor, ONLY works after the pipeline.yml file has already been run at least once to produce the model the predictor is specified to use (by the /configs files)
 
 Running Options:
- - On Windows: Double-click the predictor.bat file
+ - On Windows: Double-click the **predictor.bat** file
  - Non-Windows: Navigate to the project directory in a Terminal/Command-Line Interface, then run 'docker compose -f predict.yml build --no-cache && docker compose -f predict.yml up --remove-orphans'
       - Note: Easiest way to naivgate to project directory is with 'cd {full project directory path}', copying the directory path in appropriately
 
