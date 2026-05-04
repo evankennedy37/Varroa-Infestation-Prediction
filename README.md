@@ -1,6 +1,14 @@
 # Varroa-Infestation-Prediction
 
 ## Repository Description
+The following repository houses utilities to create a predictive model for Varroa Mite infestations of Apis Mellifera (Western Honeybee) colonies.
+
+The intended use of this project is to enable users to input data on their own apiaries and apiaries similar (ie. geographically close) to thier own, to receive a tailor-made model, specifically intended to predict Varroa Mite infestations within apiaries like theirs.
+
+Included in the repository are data from hives in Austria to provide an example. Models fit on this data are not intended to be used for apiaries outside of Austria, but can be if a user is lacking data, though performance may be less reliable.
+ - Example Data Source: https://data-for-good.pubpub.org/pub/aawkkv33/release/4
+
+For reference, on example data the model produced by this project's pipeline had a prediction accuracy of 95%.
 
 ## Getting your Own Copy
 The simplest way to use this tool is to download the repository as a ZIP file, and host it locally on your own machine.
