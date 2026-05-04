@@ -26,5 +26,19 @@ Data from a user's own operation should be placed in this folder and specified i
     - station_id: Weather station identifier, can be from a weather service, or proprietary labeling: Must be an integer value
     - date: XXXX-XX-XX string, encoding Year-Month-Day
     - hour: XX:XX:XX string, encoding Hour:Minute:Second
-    - All Others (Weather Measuring Fields): Floating point numbers (ie. decimals allowed), using -9999.0 to represent a missing 
- - Varroa Sampling Data: CSV with [sampling_id","date_from","date_to","varroa_count","yard_id"]
+    - All Other Fields (ie. Weather Measuring Fields): Floating point numbers (ie. decimals allowed), using -9999.0 to represent a missing
+    - For Reference, see: weather.csv
+ - Varroa Sampling Data: CSV with ["sampling_id","date_from","date_to","varroa_count","yard_id"]
+    - sampling_id: Unique identifier for a sampling count of varroa mites: Must be an integer value
+    - date_from: Date when the drop board was freshly set, prior to the sampling: XXXX-XX-XX string, encoding Year-Month-Day
+    - date_to: Date when the mites were counted: XXXX-XX-XX string, encoding Year-Month-Day
+    - varroa_count: Manual count of Varroa Mites on the board: Must be an integer value
+    - yard_id: A unique integer identifier for a particular yard/apiary
+    - For Reference, see: varroa_sampling.csv
+ - Yard Data: CSV with ["yard_id", "elevation", "station_id"]
+    - yard_id: A unique integer identifier for a particular yard/apiary: Should match up with those used in the selected Varroa Sampling Data
+    - elevation: Floating point value (ie. decimals allowed), denoting the elevation of the particular yard/apiary
+    - station_id: Closest weather station identifier: Should match up with those used in the selected Weather Data
+    - For Reference, see: yard.csv
+
+ Note: The easiest way to turn records into CSV files is often to use Excel's 'Export as CSV' option to convert an Excel notebook into a CSV file
