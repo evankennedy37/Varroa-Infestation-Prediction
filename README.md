@@ -40,9 +40,9 @@ Data from a user's own operation should be placed in this folder and specified i
     - *yard_id*: A unique integer identifier for a particular yard/apiary
     - For Reference, see: varroa_sampling.csv
  - **Yard Data**: CSV with ["yard_id", "elevation", "station_id"]
-    - yard_id: A unique integer identifier for a particular yard/apiary: Should match up with those used in the selected Varroa Sampling Data
-    - elevation: Floating point value (ie. decimals allowed), denoting the elevation of the particular yard/apiary
-    - station_id: Closest weather station identifier: Should match up with those used in the selected Weather Data
+    - *yard_id*: A unique integer identifier for a particular yard/apiary: Should match up with those used in the selected Varroa Sampling Data
+    - *elevation*: Floating point value (ie. decimals allowed), denoting the elevation of the particular yard/apiary
+    - *station_id*: Closest weather station identifier: Should match up with those used in the selected Weather Data
     - For Reference, see: yard.csv
 
 IMPORTANT: User-included data files should be given names without spaces (ie. replace spaces with an _)
@@ -52,28 +52,28 @@ Note: The easiest way to turn records into CSV files is often to use Excel's 'Ex
 ### /configs
 A folder with 2 JSON files in it, used for inputs to phases of the pipeline:
  - **pipeline_config.json**: Inputs to the model-creation segment of the pipeline
-     - model_name: What you would like the model produced to be called, useful primarily if creating multiple models from different data
+     - *model_name*: What you would like the model produced to be called, useful primarily if creating multiple models from different data
          - FORMATTING REQIUREMENT: In quotes (ie. "name"), Ends in .json file extension
-     - varroa_samplings_file_path: Path to the desired varroa sampling data, from the base directory of the project
+     - *varroa_samplings_file_path*: Path to the desired varroa sampling data, from the base directory of the project
          - FORMATTING REQIUREMENT: In quotes (ie. "name")
-     - yard_information_file_path: Path to the desired yard information data, from the base directory of the project
+     - *yard_information_file_path*: Path to the desired yard information data, from the base directory of the project
          - FORMATTING REQIUREMENT: In quotes (ie. "name")
-     - weather_data_file_path: Path to the desired weather data, from the base directory of the project
+     - *weather_data_file_path*: Path to the desired weather data, from the base directory of the project
          - FORMATTING REQIUREMENT: In quotes (ie. "name")
  - **prediction_confg.json**: Inputs to the prediction segment of the pipeline
-     - predictor_model_name: What model you would like to use to make a prediction, matches with created model name by default
+     - *predictor_model_name*: What model you would like to use to make a prediction, matches with created model name by default
          - FORMATTING REQIUREMENT: In quotes (ie. "name"), Ends in .json file extension
-     - weather_data_file_path: Path to the desired weather data (definite or forecast), from the base directory of the project
+     - *weather_data_file_path*: Path to the desired weather data (definite or forecast), from the base directory of the project
          - FORMATTING REQIUREMENT: In quotes (ie. "name")
-     - weather_station_id: The identifier for the weather station closest to the yard/apiary having a prediction made for it
+     - *weather_station_id*: The identifier for the weather station closest to the yard/apiary having a prediction made for it
          - FORMATTING REQIUREMENT: In quotes (ie. "name")
-     - yard_density: An integer value for the number of hives in the yard/apiary having a prediction made for it
+     - *yard_density*: An integer value for the number of hives in the yard/apiary having a prediction made for it
          - FORMATTING REQIUREMENT: Integer value
-     - yard_elevation: An floating point value (ie. decimals allowed) for the elevation of the yard/apiary having a prediction made for it
+     - *yard_elevation*: An floating point value (ie. decimals allowed) for the elevation of the yard/apiary having a prediction made for it
          - FORMATTING REQIUREMENT: Floating point value
-     - prediction_period_start_date: XXXX-XX-XX string, encoding Year-Month-Day, for the start of the date range to make predictions for
+     - *prediction_period_start_date*: XXXX-XX-XX string, encoding Year-Month-Day, for the start of the date range to make predictions for
          - FORMATTING REQIUREMENT: In quotes (ie. "XXXX-XX-XX"), XXXX-XX-XX string, encoding Year-Month-Day
-     - prediction_period_end_date: XXXX-XX-XX string, encoding Year-Month-Day, for the end of the date range to make predictions for
+     - *prediction_period_end_date*: XXXX-XX-XX string, encoding Year-Month-Day, for the end of the date range to make predictions for
          - FORMATTING REQIUREMENT: In quotes (ie. "XXXX-XX-XX"), XXXX-XX-XX string, encoding Year-Month-Day
 
 These files can be opened with a standard text editor for changing input parameters: Be mindful that the parameters are the values to the right of the ':' on each line, before the comma. When adjusting parameters, be sure to keep the comma and ':' in place, and to match the format of the data inplace by default (specified above).
@@ -137,6 +137,7 @@ Once these prerequisties are satisfied, pipeline.yml & predict.yml can be run us
     - Tensors Datafile in pipeline/outputs [Not for user interaction]
     - Model file in pipeline/outputs [Not for user interaction]
     - A Prediction in the 'predictions' folder (the folder will appear if it was absent)
+    - Model Performance Metrics in the ClearML WebUI, in the project 'Varroa Infestation Prediction', within the task 'XGBoost Optuna HPO'
   - predictions.yml: (If ran properly, only after pipeline.yml has already created a model)
     - A Prediction in the 'predictions' folder (the folder will appear if it was absent)
   
