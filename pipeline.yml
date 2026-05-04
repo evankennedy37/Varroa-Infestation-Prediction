@@ -1,0 +1,45 @@
+services:
+  notebook-1-process:
+    build:
+      context: .
+      target: pipeline
+    working_dir: /app/pipeline
+    volumes:
+      - ./data:/app/data
+      - ./configs:/app/configs
+      - ./pipeline/outputs:/app/pipeline/outputs
+    command: papermill "/app/pipeline/Varroa Infestation Prediction - Data Processor.ipynb" /dev/null
+
+  notebook-2-train:
+    build:
+      context: .
+      target: pipeline
+    working_dir: /app/pipeline
+    volumes:
+      - ./data:/app/data
+      - ./configs:/app/configs
+      - ./pipeline/outputs:/app/pipeline/outputs
+      - ~/clearml.conf:/root/clearml.conf
+    command: papermill "/app/pipeline/Varroa Infestation Prediction - Model Fitter.ipynb" /dev/null
+    depends_on:
+      notebook-1-process:
+        condition: service_completed_successfully
+
+  notebook-3-predict:
+    build:
+      context: .
+      target: pipeline
+    working_dir: /app/pipeline
+    volumes:
+      - ./data:/app/data
+      - ./configs:/app/configs
+      - ./pipeline/outputs:/app/pipeline/outputs
+      - ./predictions:/app/predictions
+    command: papermill "/app/pipeline/Varroa Infestation Prediction - Predictor.ipynb" /dev/null
+    depends_on:
+      notebook-2-train:
+        condition: service_completed_successfully
+
+networks:
+  pipeline:
+    driver: bridge
