@@ -38,7 +38,7 @@ IMPORTANT: User-included data files should be given names without spaces (ie. re
 
 Note: The easiest way to turn records into CSV files is often to use Excel's 'Export as CSV' option to convert an Excel notebook into a CSV file
 
-#### /configs
+### /configs
 A folder with 2 JSON files in it, used for inputs to phases of the pipeline:
  - pipeline_config.json: Inputs to the model-creation segment of the pipeline
      - model_name: What you would like the model produced to be called, useful primarily if creating multiple models from different data
@@ -67,7 +67,7 @@ A folder with 2 JSON files in it, used for inputs to phases of the pipeline:
 
 These files can be opened with a standard text editor for changing input parameters: Be mindful that the parameters are the values to the right of the ':' on each line, before the comma. When adjusting parameters, be sure to keep the comma and ':' in place, and to match the format of the data inplace by default (specified above).
 
-#### /pipeline
+### /pipeline
 Contains the three Juypter notebooks that form the three phases of the pipeline:
  - Data Processor: Processes the specified data files into combined Tensors
  - Model Fitter: Fits a predictive model onto the data
@@ -79,7 +79,7 @@ Generally speaking, users should not interact directly with any of this folder's
 
 Note: While these notebooks can be run in sequence to simulate the pipeline, it is not the intended approach, and can fail or produce uninteded behavior if the local environment does not match the requirements laid out in Requirements.txt, & is running Python 3.11.9
 
-#### pipeline.yml
+### pipeline.yml
 A Docker Compose file used to run the pipeline through all of its phases, producing a predictive model and predictions, based on the configuratons specified in the /configs files
 
 Running Options:
@@ -87,7 +87,7 @@ Running Options:
  - Non-Windows: Navigate to the project directory in a Terminal/Command-Line Interface, then run 'docker compose -f pipeline.yml build --no-cache && docker compose -f pipeline.yml up --remove-orphans'
       - Note: Easiest way to naivgate to project directory is with 'cd {full project directory path}', copying the directory path in appropriately
 
-#### predict.yml
+### predict.yml
 A Docker Compose file used to run the predictor, ONLY works after the pipeline.yml file has already been run at least once to produce the model the predictor is specified to use (by the /configs files)
 
 Running Options:
@@ -95,19 +95,19 @@ Running Options:
  - Non-Windows: Navigate to the project directory in a Terminal/Command-Line Interface, then run 'docker compose -f predict.yml build --no-cache && docker compose -f predict.yml up --remove-orphans'
       - Note: Easiest way to naivgate to project directory is with 'cd {full project directory path}', copying the directory path in appropriately
 
-#### pipeline.bat & predict.bat
+### pipeline.bat & predict.bat
 Windows shortcuts to run the Docker Compose files the project is built on (use explained above)
 
-#### /utilities
+### /utilities
 A folder with a supporting file included in it, should not be interacted with by user
 
-#### .gitattributes & .gitignore
+### .gitattributes & .gitignore
 Files included for the GitHub integration of the project, not to be interacted with by the user
 
-#### Dockerfile
+### Dockerfile
 A file used in the running of the pipeline and the predictor, not interacted with directly by the user
 
-## Requirements.txt
+### Requirements.txt
 A text file encoding the installation requirements for running the pipeline, not neccesary to be interacted with by the user
 
 Note: Can be used as reference if wishing to run the notebooks individually within a Virtual Environment, though this approach is not the recommended one.
