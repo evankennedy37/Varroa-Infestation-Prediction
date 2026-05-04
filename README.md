@@ -10,6 +10,7 @@ Included in the repository are data from hives in Austria to provide an example.
 
 For reference, on example data the model produced by this project's pipeline had a prediction accuracy of 95%.
 
+
 ## Getting your Own Copy
 The simplest way to use this tool is to download the repository as a ZIP file, and host it locally on your own machine.
 
@@ -17,6 +18,7 @@ Downloading this repository as a ZIP file can be accomplished by clicking on the
 
 More advanced users may also clone the repository via git for local use, but should be aware that pushes to the repository are not allowed without admin permission.
  - Note: Cloning the repository is NOT necessary to ensure the latest functionalities are being used locally
+
 
 ## Repository Components
 ### /data
@@ -119,6 +121,7 @@ A file used in the running of the pipeline and the predictor, not interacted wit
 A text file encoding the installation requirements for running the pipeline, not neccesary to be interacted with by the user
 
 Note: Can be used as reference if wishing to run the notebooks individually within a Virtual Environment, though this approach is not the recommended one.
+
 
 ## Using this Repository
 To use the main utilities of the project repositories, pipeline.yml & predict.yml, two prerequisite steps are required:
