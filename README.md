@@ -51,11 +51,18 @@ A folder with 2 JSON files in it, used for inputs to phases of the pipeline:
          - FORMATTING REQIUREMENT: In quotes (ie. "name")
  - prediction_confg.json: Inputs to the prediction segment of the pipeline
      - predictor_model_name: What model you would like to use to make a prediction, matches with created model name by default
+         - FORMATTING REQIUREMENT: In quotes (ie. "name"), Ends in .json file extension
      - weather_data_file_path: Path to the desired weather data (definite or forecast), from the base directory of the project
+         - FORMATTING REQIUREMENT: In quotes (ie. "name")
      - weather_station_id: The identifier for the weather station closest to the yard/apiary having a prediction made for it
+         - FORMATTING REQIUREMENT: In quotes (ie. "name")
      - yard_density: An integer value for the number of hives in the yard/apiary having a prediction made for it
+         - FORMATTING REQIUREMENT: Integer value
      - yard_elevation: An floating point value (ie. decimals allowed) for the elevation of the yard/apiary having a prediction made for it
-     - "prediction_period_start_date": "2017-07-21",
-     - "prediction_period_end_date": "2017-07-28"
+         - FORMATTING REQIUREMENT: Floating point value
+     - prediction_period_start_date: XXXX-XX-XX string, encoding Year-Month-Day, for the start of the date range to make predictions for
+         - FORMATTING REQIUREMENT: In quotes (ie. "XXXX-XX-XX"), XXXX-XX-XX string, encoding Year-Month-Day
+     - prediction_period_end_date: XXXX-XX-XX string, encoding Year-Month-Day, for the end of the date range to make predictions for
+         - FORMATTING REQIUREMENT: In quotes (ie. "XXXX-XX-XX"), XXXX-XX-XX string, encoding Year-Month-Day
 
 These files can be opened with a standard text editor for changing input parameters: Be mindful that the parameters are the values to the right of the ':' on each line, before the comma. When adjusting parameters, be sure to keep the comma and ':' in place, and to match the format of the data inplace by default (specified above).
