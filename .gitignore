@@ -1,3 +1,14 @@
+# Project-Specific Data Files
+weather.csv
+varroa_sampling.csv
+yard.csv
+hive.csv
+station.csv
+user.csv
+dummy.txt
+model_config.json
+predict_config.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
