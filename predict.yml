@@ -1,0 +1,16 @@
+services:
+  predict:
+    build:
+      context: .
+      target: predict
+    working_dir: /app/utilities
+    volumes:
+      - ./data:/app/data
+      - ./configs:/app/configs
+      - ./pipeline/outputs:/app/pipeline/outputs
+      - ./predictions:/app/predictions
+    command: python predict.py
+
+networks:
+  pipeline:
+    driver: bridge
