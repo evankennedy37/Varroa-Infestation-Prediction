@@ -66,3 +66,36 @@ A folder with 2 JSON files in it, used for inputs to phases of the pipeline:
          - FORMATTING REQIUREMENT: In quotes (ie. "XXXX-XX-XX"), XXXX-XX-XX string, encoding Year-Month-Day
 
 These files can be opened with a standard text editor for changing input parameters: Be mindful that the parameters are the values to the right of the ':' on each line, before the comma. When adjusting parameters, be sure to keep the comma and ':' in place, and to match the format of the data inplace by default (specified above).
+
+## /pipeline
+Contains the three Juypter notebooks that form the three phases of the pipeline:
+ - Data Processor: Processes the specified data files into combined Tensors
+ - Model Fitter: Fits a predictive model onto the data
+ - Predictor: Makes a true/false prediction of infestation, accompanied by a probability of infestation, for a given data range
+
+Additionally includes a folder labeled 'outputs' with an empty 'dummy.txt' file in it: The folder is important to have in place, the file inside can be removed if desired.
+
+Generally speaking, users should not interact directly with any of this folder's contents
+
+Note: While these notebooks can be run in sequence to simulate the pipeline, it is not the intended approach, and can fail or produce uninteded behavior if the local environment does not match the requirements laid out in Requirements.txt, & is running Python 3.11.9
+
+## pipeline.yml
+A Docker Compose file used to run the pipeline through all of its phases, producing a predictive model and predictions, based on the configuratons specified in the /configs files
+
+Running Options:
+ - On Windows: Double-click the pipeline.bat file
+ - Non-Windows: Navigate to the project directory in a Terminal/Command-Line Interface, then run 'docker compose -f predict.yml build --no-cache && docker compose -f predict.yml up --remove-orphans'
+
+## /utilities
+A folder with a supporting file included in it, should not be interacted with by user
+
+## .gitattributes & .gitignore
+Files included for the GitHub integration of the project, not to be interacted with by the user
+
+## Dockerfile
+A file used in the running of the pipeline and the predictor, not interacted with directly by the user
+
+## Requirements.txt
+A text file encoding the installation requirements for running the pipeline, not neccesary to be interacted with by the user
+
+Note: Can be used as reference if wishing to run the notebooks individually within a Virtual Environment, though this approach is not the recommended one.
