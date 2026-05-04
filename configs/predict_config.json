@@ -1,0 +1,9 @@
+{
+  "predictor_model_name": "varroa_predictor.json",
+  "weather_data_file_path": "../data/weather.csv",
+  "weather_station_id": 112250,
+  "yard_density": 100,
+  "yard_elevation": 500,
+  "prediction_period_start_date": "2017-07-21",
+  "prediction_period_end_date": "2017-07-28"
+}

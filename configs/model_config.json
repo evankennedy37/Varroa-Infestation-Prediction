@@ -1,0 +1,6 @@
+{
+  "model_name": "varroa_predictor.json",
+  "varroa_samplings_file_path": "../data/varroa_sampling.csv",
+  "yard_information_file_path": "../data/yard.csv",
+  "weather_data_file_path": "../data/weather.csv"
+}
