@@ -94,16 +94,16 @@ Note: While these notebooks can be run in sequence to simulate the pipeline, it 
 A Docker Compose file used to run the pipeline through all of its phases, producing a predictive model and predictions, based on the configuratons specified in the /configs files
 
 Running Options:
- - On Windows: Double-click the **pipeline.bat** file
- - Non-Windows: Navigate to the project directory in a Terminal/Command-Line Interface, then run 'docker compose -f pipeline.yml build --no-cache && docker compose -f pipeline.yml up --remove-orphans'
+ - *On Windows*: Double-click the **pipeline.bat** file
+ - *Non-Windows Systems*: Navigate to the project directory in a Terminal/Command-Line Interface, then run 'docker compose -f pipeline.yml build --no-cache && docker compose -f pipeline.yml up --remove-orphans'
       - Note: Easiest way to naivgate to project directory is with 'cd {full project directory path}', copying the directory path in appropriately
 
 ### predict.yml
 A Docker Compose file used to run the predictor, ONLY works after the pipeline.yml file has already been run at least once to produce the model the predictor is specified to use (by the /configs files)
 
 Running Options:
- - On Windows: Double-click the **predictor.bat** file
- - Non-Windows: Navigate to the project directory in a Terminal/Command-Line Interface, then run 'docker compose -f predict.yml build --no-cache && docker compose -f predict.yml up --remove-orphans'
+ - *On Windows*: Double-click the **predictor.bat** file
+ - *Non-Windows Systems*: Navigate to the project directory in a Terminal/Command-Line Interface, then run 'docker compose -f predict.yml build --no-cache && docker compose -f predict.yml up --remove-orphans'
       - Note: Easiest way to naivgate to project directory is with 'cd {full project directory path}', copying the directory path in appropriately
 
 ### pipeline.bat & predict.bat
